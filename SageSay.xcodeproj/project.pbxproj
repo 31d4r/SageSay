@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		CECE93FC2A280FD900E89786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE93FB2A280FD900E89786 /* AppDelegate.swift */; };
 		CECE93FE2A280FD900E89786 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE93FD2A280FD900E89786 /* SceneDelegate.swift */; };
-		CECE94002A280FD900E89786 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE93FF2A280FD900E89786 /* ViewController.swift */; };
-		CECE94032A280FD900E89786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECE94012A280FD900E89786 /* Main.storyboard */; };
+		CECE94002A280FD900E89786 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE93FF2A280FD900E89786 /* MainViewController.swift */; };
 		CECE94052A280FDA00E89786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECE94042A280FDA00E89786 /* Assets.xcassets */; };
-		CECE94082A280FDA00E89786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECE94062A280FDA00E89786 /* LaunchScreen.storyboard */; };
+		CECE94142A2811DE00E89786 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94132A2811DE00E89786 /* Quotes.swift */; };
+		CECE94162A2811ED00E89786 /* QuotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94152A2811ED00E89786 /* QuotesViewModel.swift */; };
+		CECE94182A28121300E89786 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE94172A28121300E89786 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CECE93F82A280FD900E89786 /* SageSay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SageSay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE93FB2A280FD900E89786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECE93FD2A280FD900E89786 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CECE93FF2A280FD900E89786 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CECE94022A280FD900E89786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CECE94042A280FDA00E89786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CECE94072A280FDA00E89786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CECE94092A280FDA00E89786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECE93FF2A280FD900E89786 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CECE94042A280FDA00E89786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SageSay/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		CECE94092A280FDA00E89786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SageSay/Resources/Info.plist; sourceTree = SOURCE_ROOT; };
+		CECE94132A2811DE00E89786 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		CECE94152A2811ED00E89786 /* QuotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesViewModel.swift; sourceTree = "<group>"; };
+		CECE94172A28121300E89786 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		CECE93FA2A280FD900E89786 /* SageSay */ = {
 			isa = PBXGroup;
 			children = (
-				CECE93FB2A280FD900E89786 /* AppDelegate.swift */,
-				CECE93FD2A280FD900E89786 /* SceneDelegate.swift */,
-				CECE93FF2A280FD900E89786 /* ViewController.swift */,
-				CECE94012A280FD900E89786 /* Main.storyboard */,
-				CECE94042A280FDA00E89786 /* Assets.xcassets */,
-				CECE94062A280FDA00E89786 /* LaunchScreen.storyboard */,
-				CECE94092A280FDA00E89786 /* Info.plist */,
+				CECE94122A28114100E89786 /* Resources */,
+				CECE94112A28112D00E89786 /* ViewControllers */,
+				CECE94102A28112800E89786 /* Models */,
+				CECE940F2A28111300E89786 /* ViewModels */,
 			);
 			path = SageSay;
+			sourceTree = "<group>";
+		};
+		CECE940F2A28111300E89786 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CECE94152A2811ED00E89786 /* QuotesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CECE94102A28112800E89786 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CECE94132A2811DE00E89786 /* Quotes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CECE94112A28112D00E89786 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CECE93FF2A280FD900E89786 /* MainViewController.swift */,
+				CECE94172A28121300E89786 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CECE94122A28114100E89786 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CECE93FB2A280FD900E89786 /* AppDelegate.swift */,
+				CECE93FD2A280FD900E89786 /* SceneDelegate.swift */,
+				CECE94042A280FDA00E89786 /* Assets.xcassets */,
+				CECE94092A280FDA00E89786 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECE94082A280FDA00E89786 /* LaunchScreen.storyboard in Resources */,
 				CECE94052A280FDA00E89786 /* Assets.xcassets in Resources */,
-				CECE94032A280FD900E89786 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,32 +171,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECE94002A280FD900E89786 /* ViewController.swift in Sources */,
+				CECE94142A2811DE00E89786 /* Quotes.swift in Sources */,
+				CECE94002A280FD900E89786 /* MainViewController.swift in Sources */,
 				CECE93FC2A280FD900E89786 /* AppDelegate.swift in Sources */,
+				CECE94162A2811ED00E89786 /* QuotesViewModel.swift in Sources */,
 				CECE93FE2A280FD900E89786 /* SceneDelegate.swift in Sources */,
+				CECE94182A28121300E89786 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		CECE94012A280FD900E89786 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CECE94022A280FD900E89786 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CECE94062A280FDA00E89786 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CECE94072A280FDA00E89786 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CECE940A2A280FDA00E89786 /* Debug */ = {
@@ -289,12 +306,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HBSJWT4Z7H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SageSay/Info.plist;
+				INFOPLIST_FILE = SageSay/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,12 +333,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HBSJWT4Z7H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SageSay/Info.plist;
+				INFOPLIST_FILE = SageSay/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
