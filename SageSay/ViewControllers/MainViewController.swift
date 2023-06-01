@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.font = UIFont(name: "Avenir-Light", size: 20)
         label.textColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
             return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
         }
@@ -24,6 +25,7 @@ class MainViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Black", size: 17)
         label.textColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
             return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
         }
@@ -73,8 +75,8 @@ class MainViewController: UIViewController {
             quoteText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             quoteText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             
-            quoteAuthor.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             quoteAuthor.topAnchor.constraint(equalTo: quoteText.bottomAnchor, constant: 20),
+            quoteAuthor.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
             
             generateBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             generateBtn.topAnchor.constraint(equalTo: quoteAuthor.bottomAnchor, constant: 20),

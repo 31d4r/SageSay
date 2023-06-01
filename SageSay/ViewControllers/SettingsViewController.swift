@@ -9,40 +9,82 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    var datePicker: UIDatePicker!
-    var saveButton: UIButton!
-    var infoLabel: UILabel!
+    var datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.datePickerMode = .time
+        picker.preferredDatePickerStyle = .wheels
+        return picker
+    }()
+
+    var soundPicker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
+
+    var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Save", for: .normal)
+        button.tintColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        }
+        return button
+    }()
+
+    var infoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Please setup the time at which you want to receive a quote"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Avenir-Light", size: 20)
+        label.textColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        }
+        return label
+    }()
+
+    var soundLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.text = "Select sound for notification:"
+        label.font = UIFont(name: "Avenir-Light", size: 20)
+        label.textColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        }
+        return label
+    }()
     
+    var sounds = ["Default", "Accent", "Alert", "Ping"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.black : UIColor.white
+        }
         
-        configureUI()
+        setupUI()
         
         setupConstraints()
     }
     
-    func configureUI() {
-        view.backgroundColor = .systemBackground
-        
-        datePicker = UIDatePicker()
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.datePickerMode = .time
-        datePicker.preferredDatePickerStyle = .wheels
+    func setupUI() {
         view.addSubview(datePicker)
-        
-        saveButton = UIButton(type: .system)
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.setTitle("Save", for: .normal)
-        saveButton.addTarget(self, action: #selector(saveSettings), for: .touchUpInside)
+        view.addSubview(soundPicker)
         view.addSubview(saveButton)
-        
-        infoLabel = UILabel()
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.text = "Please setup the time at which you want to receive a quote"
-        infoLabel.textAlignment = .center
-        infoLabel.numberOfLines = 0
-        infoLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
         view.addSubview(infoLabel)
+        view.addSubview(soundLabel)
+        
+        
+        soundLabel.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
+        
+        saveButton.addTarget(self, action: #selector(saveSettings), for: .touchUpInside)
+        
+        soundPicker.delegate = self
+        soundPicker.dataSource = self
     }
     
     func setupConstraints() {
@@ -57,8 +99,17 @@ class SettingsViewController: UIViewController {
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            soundLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            soundLabel.bottomAnchor.constraint(equalTo: soundPicker.topAnchor, constant: 20),
+            soundLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            soundLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+
+            soundPicker.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 20),
+            soundPicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            soundPicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 20),
+            saveButton.topAnchor.constraint(equalTo: soundPicker.bottomAnchor, constant: 20),
             saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             saveButton.heightAnchor.constraint(equalToConstant: 50)
@@ -87,3 +138,21 @@ class SettingsViewController: UIViewController {
     }
 }
 
+
+extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sounds.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return sounds[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        UserDefaults.standard.set(sounds[row], forKey: "NotificationSound")
+    }
+}
